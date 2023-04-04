@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 // Configuration des routes
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
     res.send("OK");
 });
 
