@@ -16,6 +16,7 @@ const authorizationMiddleware = (req, res, next) => {
     return next();
 }
 
+
 app.use(express.static('dist'));
 
 app.use(cors({
@@ -29,13 +30,27 @@ app.get("/api/health", (req, res) => {
 
 //Création d'une donnée
 app.post("/api/data", authorizationMiddleware, async (req, res) => {
-    const {name} = req.body;
-    if (typeof name !== "string"){
-        return res.status(400).send({400:"Name should be a string"})
-    }
+    const {temp, moist, bright} = req.query;
     try {
-        const result = await prisma.result.create({data: {name: req.body.name}});
+        const result = await prisma.infos.create({
+            data: {
+                temp: temp,
+                moist: moist,
+                bright: bright
+            }
+        });
         res.json(result);
+        const oldestEntry = await prisma.infos.findMany({
+            orderBy: {
+                id: 'asc',
+            },
+            take: 1,
+        });
+        await prisma.infos.delete({
+            where: {
+                id: oldestEntry[0].id,
+            },
+        });
     } catch (e) {
         console.error(e);
         res.status(500).send(e);
@@ -45,7 +60,7 @@ app.post("/api/data", authorizationMiddleware, async (req, res) => {
 //Lister les données
 app.get("/api/data", authorizationMiddleware, async (req, res) => {
     try {
-        const result = await prisma.result.findMany({take: 100, orderBy: {name: "asc"}});
+        const result = await prisma.infos.findMany();
         res.json(result);
     } catch (e) {
         console.error(e);
@@ -54,10 +69,10 @@ app.get("/api/data", authorizationMiddleware, async (req, res) => {
 });
 
 //Suppression d'une donnée
-app.delete("/api/:dataName", authorizationMiddleware, async(req, res) => {
+app.delete("/api/data/:id", authorizationMiddleware, async (req, res) => {
     try {
-        const {dataName} = req.params;
-        const result = await prisma.result.delete({where: {name: dataName}});
+        const {id} = +req.params;
+        const result = await prisma.infos.delete({where: {id: id}});
         res.json(result);
     } catch (e) {
         console.error(e);
