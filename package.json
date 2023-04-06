@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "node api/api.js 3000"
+    "start": "node api/api.js"
   },
   "dependencies": {
     "@prisma/client": "^4.12.0",
