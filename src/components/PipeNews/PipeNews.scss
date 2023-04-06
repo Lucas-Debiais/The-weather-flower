@@ -1,0 +1,67 @@
+.weather_block_information_container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .weather_block_information {
+    margin: 0 0 2rem 1.5rem;
+    padding: 1.5rem;
+    background-color: #B3B7BD;
+    color: white;
+    border: solid .1rem #D9D9D9;
+    border-radius: 2.2rem;
+    width: 16.4rem;
+    height: 16.4rem;
+
+    .parameter {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      &::before {
+        content: '';
+        display: block;
+        position: relative;
+      }
+
+      h5 {
+        margin-left: .5rem;
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+    }
+
+    .thermometer {
+      &::before {
+        background: url('../../assets/img/parameters/thermometer.svg') no-repeat;
+        width: 1rem;
+        height: 2.3rem;
+      }
+    }
+
+    .moisture {
+      &::before {
+        background: url('../../assets/img/parameters/moisture.svg') no-repeat;
+        width: 1.9rem;
+        height: 1.4rem;
+      }
+    }
+
+    .brightness {
+      &::before {
+        background: url('../../assets/img/parameters/brightness.svg') no-repeat;
+        width: 1.9rem;
+        height: 1.3rem;
+      }
+    }
+
+    p {
+      margin: 0 0 3rem 0;
+      font-size: 3.5rem;
+      font-weight: 500;
+    }
+
+    h6 {
+      font-weight: 500;
+    }
+  }
+}

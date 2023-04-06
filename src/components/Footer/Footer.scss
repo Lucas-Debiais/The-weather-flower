@@ -1,0 +1,57 @@
+footer {
+  display: flex;
+  align-items: end;
+  margin: 0 1.5rem;
+  padding: 0 1.5rem;
+  height: 18.4rem;
+  border-radius: 0 0 2.2rem 2.2rem;
+  background: linear-gradient(7.6deg, rgba(211, 217, 232, 1) 0%, rgba(211, 217, 232, 1) 80%, rgba(224, 229, 236, 1) 80%);
+
+  .informations {
+    display: flex;
+
+    .informations_container {
+      margin-bottom: 2rem;
+
+      h5 {
+        font-weight: 500;
+      }
+    }
+
+    .presentation {
+      .picture {
+        display: flex;
+        margin-bottom: 1.5rem;
+
+        .profil {
+          &::before {
+            content: '';
+            display: block;
+            width: 4.5rem;
+            height: 4.5rem;
+          }
+        }
+
+        .lucas {
+          &::before {
+            background: url('../../assets/img/lucas.png') no-repeat;
+          }
+        }
+
+        .baptiste {
+          margin-left: 1.5rem;
+
+          &::before {
+            background: url('../../assets/img/baptiste.png') no-repeat;
+          }
+        }
+      }
+    }
+
+    .school {
+      display: flex;
+      align-items: end;
+      margin-left: 4rem;
+    }
+  }
+}
