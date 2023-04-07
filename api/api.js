@@ -68,18 +68,6 @@ app.get("/api/data", authorizationMiddleware, async (req, res) => {
     }
 });
 
-//Suppression d'une donnée
-app.delete("/api/data/:id", authorizationMiddleware, async (req, res) => {
-    try {
-        const {id} = +req.params;
-        const result = await prisma.infos.delete({where: {id: id}});
-        res.json(result);
-    } catch (e) {
-        console.error(e);
-        res.status(500).send(e);
-    }
-});
-
 // Lancement du server
 app.listen(3000, () => {
     console.log('Server started !');
