@@ -1,16 +1,15 @@
 .weather_block_information_container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
 
   .weather_block_information {
-    margin: 0 0 2rem 1.5rem;
     padding: 1.5rem;
     background-color: #B3B7BD;
     color: white;
     border: solid .1rem #D9D9D9;
     border-radius: 2.2rem;
-    width: 16.4rem;
-    height: 16.4rem;
+    width: 100%;
 
     .parameter {
       display: flex;

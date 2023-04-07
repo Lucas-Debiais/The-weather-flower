@@ -30,7 +30,7 @@ app.get("/api/health", (req, res) => {
 
 //Création d'une donnée
 app.post("/api/data", authorizationMiddleware, async (req, res) => {
-    const {temp, moist, bright} = req.query;
+    const {temp, moist, bright} = req.body;
     try {
         const result = await prisma.infos.create({
             data: {
@@ -61,18 +61,6 @@ app.post("/api/data", authorizationMiddleware, async (req, res) => {
 app.get("/api/data", authorizationMiddleware, async (req, res) => {
     try {
         const result = await prisma.infos.findMany();
-        res.json(result);
-    } catch (e) {
-        console.error(e);
-        res.status(500).send(e);
-    }
-});
-
-//Suppression d'une donnée
-app.delete("/api/data/:id", authorizationMiddleware, async (req, res) => {
-    try {
-        const {id} = +req.params;
-        const result = await prisma.infos.delete({where: {id: id}});
         res.json(result);
     } catch (e) {
         console.error(e);
