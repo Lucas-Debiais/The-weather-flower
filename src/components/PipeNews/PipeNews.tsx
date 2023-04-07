@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './PipeNews.scss';
 
-
 function PipeNews(): JSX.Element {
-    const [data, setData] = useState({})
+    const [data, setData]:any = useState()
 
     useEffect(() => {
         fetch('http://localhost:3000/api/data')
