@@ -1,9 +1,22 @@
-export function getCurrentDate(separator = '/') {
+const newDate: Date = new Date()
+const date: number = newDate.getDate();
+const month: number = newDate.getMonth() + 1;
+const year: number = newDate.getFullYear();
+const hours: number = newDate.getHours();
+const minutes: number = newDate.getMinutes();
 
-    let newDate = new Date()
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
+export function GetCurrentDate() {
+    return (
+        <>
+            {date < 10 ? `0${date}` : `${date}`} / {month < 10 ? `0${month}` : `${month}`} / {year}
+        </>
+    )
+}
 
-    return `${year}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${date}`
+export function GetCurrentHour() {
+    return (
+        <>
+            {hours < 10 ? `0${hours}` : `${hours}`}:{minutes < 10 ? `0${minutes}` : `${minutes}`}
+        </>
+    )
 }

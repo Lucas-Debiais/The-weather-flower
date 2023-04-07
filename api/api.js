@@ -30,7 +30,7 @@ app.get("/api/health", (req, res) => {
 
 //Création d'une donnée
 app.post("/api/data", authorizationMiddleware, async (req, res) => {
-    const {temp, moist, bright} = req.query;
+    const {temp, moist, bright} = req.body;
     try {
         const result = await prisma.infos.create({
             data: {
