@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './PipeNews.scss';
 
-function PipeNews(): JSX.Element {
-    const [data, setData]:any = useState()
-
+function fetcher() {
+    const [data, setData] = useState({"temp" : "0", "moist": "0", "bright": "0"})
     useEffect(() => {
         fetch('http://localhost:3000/api/data')
             .then(response => {
@@ -20,6 +19,11 @@ function PipeNews(): JSX.Element {
             });
     }, [])
 
+    return data
+}
+
+function PipeNews(): JSX.Element {
+    const data = fetcher()
     console.log(data)
     return (
         <div className={'weather_block_information_container'}>
