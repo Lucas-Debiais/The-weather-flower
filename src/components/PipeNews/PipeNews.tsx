@@ -4,7 +4,7 @@ import './PipeNews.scss';
 function fetcher() {
     const [data, setData] = useState({"temp" : "0", "moist": "0", "bright": "0"})
     useEffect(() => {
-        fetch('http://localhost:3000/api/data')
+        fetch('./api/data')
             .then(response => {
                 if (response.ok) {
                     return response.text();
